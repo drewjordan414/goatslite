@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+      args:
+        # Build-time value so the client uses the nginx proxy path
+        VITE_API_BASE: /api
+    ports:
+      - "8080:80"          # open http://localhost:8080
+    depends_on:
+      - api
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    env_file:
+      - ./api/.env         # contains MONGODB_URI, etc.
+    environment:
+      PORT: "3001"
+      DB_NAME: "goatslite"
+      COLLECTION: "guestbook_entries"
+      # When served behind the same domain via nginx proxy, CORS isn't needed,
+      # but we'll keep a safe allowlist for local testing / tools:
+      CORS_ORIGINS: "http://localhost:8080,http://127.0.0.1:8080"
+    expose:
+      - "3001"

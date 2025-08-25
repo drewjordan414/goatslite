@@ -1,0 +1,130 @@
+.jukebox {
+  display: grid;
+  grid-template-columns: 220px minmax(240px, 1fr);
+  gap: 8px;
+  padding: 6px;
+  font-family: "MS Sans Serif", Tahoma, sans-serif;
+  font-size: 13px;
+  color: #000;
+}
+
+/* --- List box (left) --- */
+.w95-list {
+  border: 2px inset #808080;
+  background: #fff;
+  overflow: auto;
+  min-height: 180px;
+}
+
+.w95-row {
+  padding: 6px 8px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: default;
+}
+
+.w95-row:hover {
+  background: #e6edf7;
+}
+
+.w95-row.selected {
+  background: #000080;
+  color: #fff;
+}
+
+/* --- Button cluster --- */
+.controls {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.w95-btn {
+  height: 22px;
+  min-width: 24px;
+  padding: 0 6px;
+  background: #c0c0c0;
+  border: 2px outset #ffffff;
+  box-shadow: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.w95-btn:active {
+  border: 2px inset #ffffff;
+}
+
+.w95-btn:focus {
+  outline: 1px dotted #000;
+  outline-offset: -4px;
+}
+
+/* --- Sliders --- */
+.sliders {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.w95-range {
+  width: 100%;
+  background: transparent; /* let track styles show */
+}
+
+/* WebKit (Chrome, Edge, Safari) */
+.w95-range::-webkit-slider-runnable-track {
+  height: 8px;
+  background: #dcdcdc;
+  border: 2px inset #808080;
+}
+.w95-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #c0c0c0;
+  border: 2px outset #ffffff;
+  margin-top: -3px; /* center on track */
+}
+
+/* Firefox */
+.w95-range::-moz-range-track {
+  height: 8px;
+  background: #dcdcdc;
+  border: 2px inset #808080;
+}
+.w95-range::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: #c0c0c0;
+  border: 2px outset #ffffff;
+}
+
+/* Volume cluster */
+.vol {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* --- Right-side body layout --- */
+.right {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 8px;
+}
+
+/* Status bar */
+.status {
+  margin-top: 6px;
+  border: 2px inset #808080;
+  background: #c0c0c0;
+  padding: 2px 6px;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

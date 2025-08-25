@@ -1,0 +1,80 @@
+:root{
+  --tb-h: 36px;               /* keep in sync with Taskbar.css */
+  --panel: #c0c0c0;
+  --menu-bg: #ece9d8;         /* 95 beige */
+  --menu-edge-light: #ffffff;
+  --menu-edge-dark: #808080;
+  --menu-blue: #000080;
+  --menu-blue2:#003399;
+  --text: #000;
+  --sep: #888;
+  --shadow: #0003;
+
+  /* ⬇️ scale factor for the whole Start menu */
+  --sm-scale: 1.25;           /* try 1.2–1.5 to taste */
+}
+
+.sm-overlay{
+  position: fixed;
+  left: 0; right: 0; top: 0;
+  bottom: var(--tb-h);        /* DO NOT cover the taskbar */
+  z-index: 100000;
+}
+
+.sm-menu{
+  position: fixed;
+  left: 6px;
+  bottom: calc(var(--tb-h) + 6px);
+  width: 180px;
+  box-sizing: border-box;
+  background: var(--menu-bg);
+  color: var(--text);
+  z-index: 100001;
+  box-shadow:
+    4px 4px 0 var(--shadow),
+    inset -1px -1px 0 var(--menu-edge-dark),
+    inset  1px  1px 0 var(--menu-edge-light);
+  border: 1px solid var(--menu-edge-dark);
+  font-family: "MS Sans Serif", Tahoma, sans-serif;
+
+  /* ⬇️ make it bigger while staying anchored to Start */
+  transform: scale(var(--sm-scale));
+  transform-origin: bottom left;
+}
+
+.sm-header{
+  background: var(--menu-blue2);
+  color: #fff;
+  padding: 6px 10px;
+  font-weight: bold;
+  letter-spacing: .2px;
+}
+
+.sm-item{
+  display:flex; align-items:center; gap:8px;
+  padding:6px 10px; font-size:14px;
+  cursor: default;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.sm-item:hover{
+  background: var(--menu-blue);
+  color: #fff;
+}
+
+.sm-icon{
+  width: 20px; height: 20px; flex: 0 0 20px;
+  image-rendering: pixelated; /* keep icons crisp even when scaled */
+}
+
+.text-icon{
+  display:inline-flex; align-items:center; justify-content:center;
+  font-size:16px;
+}
+
+.sm-sep{ margin:6px 8px; border-top:1px dotted var(--sep); }
+
+/* Optional: make it a little larger on smaller screens */
+@media (max-width: 900px){
+  :root{ --sm-scale: 1.35; }
+}

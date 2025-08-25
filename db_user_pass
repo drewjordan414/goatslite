@@ -1,0 +1,8 @@
+kwueDpyywUB7tFa
+
+
+db.createUser({
+  user: "goatslite",
+  pwd:  "kwueDpyywUB7tFa",
+  roles: [{ role: "readWrite", db: "goatslite" }]
+})

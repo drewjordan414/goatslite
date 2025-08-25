@@ -1,0 +1,49 @@
+/* Easy knobs */
+:root{
+  --icon-size: 64px;     /* try 48px or 64px depending on your .ico set */
+  --icon-area: 120px;    /* clickable width of each icon block */
+  --icon-font: 16px;     /* label size */
+  --icon-pad: 8px;       /* padding around icon */
+}
+
+.desk-icon{
+  position: absolute;             /* free placement */
+  width: var(--icon-area);
+  padding: var(--icon-pad) 4px;
+  text-align: center;
+  -webkit-user-select: none;      /* Safari */
+  user-select: none;
+  touch-action: none;             /* smooth touch drag */
+  cursor: default;
+}
+
+.desk-icon-img{
+  width: var(--icon-size);
+  height: var(--icon-size);
+  image-rendering: pixelated;     /* crisp Win95 vibe */
+}
+
+.desk-icon-label{
+  margin-top: 8px;
+  color: #fff;
+  font-family: "MS Sans Serif", Tahoma, sans-serif;
+  font-size: var(--icon-font);
+  text-shadow: 1px 1px 0 #000;
+  line-height: 1.1;
+  display: inline-block;
+}
+
+.desk-icon:hover .desk-icon-label,
+.desk-icon:focus .desk-icon-label{
+  background: rgba(0, 0, 128, 0.6);
+  border: 1px dotted #c0c0c0;
+}
+
+/* Optional: scale down a bit on small screens */
+@media (max-width: 480px){
+  :root{
+    --icon-size: 48px;
+    --icon-area: 104px;
+    --icon-font: 14px;
+  }
+}
